@@ -1,0 +1,20 @@
+{
+  "name": "policy_app",
+  "version": "1.0.0",
+  "description": "Application for managing the compliance of employees towards various company policies",
+  "license": "ISC",
+  "author": "George Chidebem-Oba",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "nodemon": "^3.1.11",
+    "sequelize": "^6.37.7"
+  }
+}
