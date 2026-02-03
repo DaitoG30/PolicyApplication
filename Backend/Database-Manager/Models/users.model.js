@@ -9,30 +9,13 @@ export const User = sequelize.define('User', {
         primaryKey: true,
         defaultValue: DataTypes.UUIDV4,
     },
-    firstName: {
-        type: DataTypes.STRING,
-    },
-    lastName: {
-        type: DataTypes.STRING,
-    },
-    email: {
+    email:{
         type: DataTypes.STRING,
         allowNull: false,
-        validate: {
-            isEmail: {
-                msg: 'Please enter a valid email address.',
-            },
-            notEmpty: true
-        }
     },
-    password: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-            notEmpty: {
-                msg: "Password is required"
-            }
-        }
+    admin:{
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
     }
 },
     {

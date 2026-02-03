@@ -1,6 +1,6 @@
 import { Router } from "express";
 import {
-    createPolicy,
+    createPolicy, createPolicyResponse,
     deletePolicy,
     getAllPolicies,
     getPolicy, getPolicyResponse,
@@ -10,6 +10,8 @@ import policyTypeEndpoint from "./policyType.endpoint.js";
 
 
 const policyEndpoint = new Router()
+
+policyEndpoint.post('/getresponse',createPolicyResponse)
 
 policyEndpoint.post('/response',getPolicyResponse)
 

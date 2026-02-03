@@ -6,6 +6,50 @@ import {where} from "sequelize";
 
 
 
+export const createPolicyResponse = async (req, res) => {
+
+    try{
+        const {id, user} = req.body
+
+        console.log(id,user)
+        const policyResponse = await PolicyResponse.findAll({
+            where:
+                {
+                    PolicyId: id,
+                    user: user
+                }
+        })
+
+
+        if (!policyResponse.length) {
+            const policyRes = await PolicyResponse.create({
+                user: user,
+                PolicyId: id,
+            })
+
+            await policyRes.save()
+            res.status(200).json({
+                success: true,
+            })
+        } else {
+            res.status(400).json({
+                success: false,
+                message: `Policy ${id} already exists`
+            })
+        }
+    }
+    catch(err){
+        res.status(400).json({
+            success: false,
+        })
+    }
+
+
+
+
+}
+
+
 export const getPolicyResponse = async(req, res) => {
     try{
         const {id, user} = req.body;
@@ -17,42 +61,22 @@ export const getPolicyResponse = async(req, res) => {
                     user: user
                 }
         })
-
-
         if (polciyres.length) {
             res.status(200).json({
                 status: true,
             })
-        } else {
-            try {
-
-                const policyres = await PolicyResponse.create({
-                    user: user,
-                    PolicyId: id
-                })
-
-                await policyres.save()
-
-                res.status(200).json({
-                    status: true,
-                    response: polciyres
-                })
-
-
-            } catch (err) {
-                res.status(400).json({
-                    status: false,
-                })
-            }
+            console.log('True')
+        }
+        else {
+            res.status(200).json({
+                status: false,
+            })
         }
     }catch(err){
         res.status(400).json({
             status: false,
         })
     }
-
-
-
 }
 
 export const createPolicyType = async (req, res) => {
@@ -269,6 +293,7 @@ export const getAllPolicies = async (req, res) => {
                 "id": type.id,
                 "name": type.name,
                 "link": type.link,
+                "status": false
             }
 
             policy.push(tmpPolicy)

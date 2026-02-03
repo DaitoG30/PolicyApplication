@@ -7,7 +7,7 @@ import policyTypeEndpoint from "./Routes/BackEnd/policyType.endpoint.js";
 
 const app = express();
 
-app.use(cors({ origin: 'http://localhost:3001' }));
+app.use(cors({ origin: 'http://localhost:3000' }));
 app.use(cors({ origin: 'http://localhost:5173' })); // Allow your frontend
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
