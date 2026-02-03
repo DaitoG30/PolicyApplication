@@ -165,6 +165,7 @@ export const getPolicyTypes = async (req, res) => {
 }
 
 
+
 // Add a new policy to the Database
 export const createPolicy = async (req, res) => {
 
